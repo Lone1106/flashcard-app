@@ -15,10 +15,20 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "react-dotenv && react-scripts start",
+    "build": "react-dotenv && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "react-dotenv": {
+    "whitelist": [
+      "REACT_APP_API",
+      "REACT_APP_DOMAIN",
+      "REACT_APP_PROJECT_ID",
+      "REACT_APP_BUCKET",
+      "REACT_APP_SENDER",
+      "REACT_APP_APP_ID"
+    ]
   },
   "eslintConfig": {
     "extends": [

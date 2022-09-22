@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link, Outlet } from "react-router-dom";
 
 import classes from "./Header.module.css";
 
@@ -13,37 +14,39 @@ function Header() {
 		? `${classes.menu} ${classes.visible}`
 		: `${classes.menu}`;
 
-	let iconClasses = showNav ? `${classes.close}` : `${classes.icon}`;
+	let iconClasses = showNav
+		? `${classes.icon} fa-solid fa-xmark`
+		: `${classes.icon} fa-solid fa-bars`;
+
+	let backdropClasses = showNav
+		? `${classes.backdrop} ${classes.backdropvisible}`
+		: `${classes.backdrop}`;
 
 	return (
 		<header className={classes.header}>
 			<div className={classes.headeritems}>
-				<input type="checkbox" className={classes.toggle} id="navtoggle" />
-				<p className={classes.name}>Flashy</p>
-				<label
-					className={classes.button}
-					onClick={toggleNav}
-					htmlFor="navtoggle"
-				>
-					<span className={iconClasses}>&nbsp;</span>
-				</label>
+				<a href="/" className={classes.name}>
+					<span>F</span>lashy
+				</a>
+				<i className={iconClasses} onClick={toggleNav}></i>
 			</div>
 
-			<div className={classes.backdrop}></div>
+			<div className={backdropClasses}></div>
 
 			<nav className={navClasses}>
 				<ul className={classes.navlist}>
 					<li>
-						<a href="#profile">Profile</a>
+						<Link to="/profile">Profile</Link>
 					</li>
 					<li>
-						<a href="#study">Study</a>
+						<Link to="/cards">Cards</Link>
 					</li>
 					<li>
-						<a href="#cards">Cards</a>
+						<Link to="/study">Study</Link>
 					</li>
 				</ul>
 			</nav>
+			<Outlet />
 		</header>
 	);
 }

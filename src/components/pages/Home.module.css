@@ -1,0 +1,38 @@
+.home {
+	width: 55%;
+}
+
+.signup,
+.login {
+	width: 100%;
+	padding: 1rem;
+	border-radius: 10px;
+	text-align: center;
+	text-decoration: none;
+	display: block;
+	font-weight: bold;
+	letter-spacing: 1px;
+	font-size: 1.4rem;
+	transition: 0.2s all;
+}
+
+.signup:link,
+.signup:visited {
+	margin-bottom: 1rem;
+	background-color: #6741d9;
+	color: #f1f3f5;
+}
+
+.signup:hover {
+	background-color: #845ef7;
+}
+
+.login:link,
+.login:visited {
+	background-color: #fff;
+}
+
+.login:hover{
+	background-color: #868e96;
+	color: #f1f3f5;
+}
