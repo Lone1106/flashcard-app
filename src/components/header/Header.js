@@ -1,10 +1,15 @@
 import { useState } from "react";
+import { signOut } from "firebase/auth";
+import firebaseAuth from "../firebase/Firebase";
+import { useNavigate } from "react-router-dom";
 import { Link, Outlet } from "react-router-dom";
 
 import classes from "./Header.module.css";
 
-function Header() {
+function Header({ userObj }) {
 	const [showNav, setShowNav] = useState(false);
+	const copyYear = new Date().getFullYear();
+	const navigate = useNavigate();
 
 	const toggleNav = () => {
 		setShowNav(!showNav);
@@ -22,18 +27,36 @@ function Header() {
 		? `${classes.backdrop} ${classes.backdropvisible}`
 		: `${classes.backdrop}`;
 
+	const logoutUser = () => {
+		signOut(firebaseAuth)
+			.then(() => {
+				console.log("logged out");
+				navigate("/home");
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
+
 	return (
 		<header className={classes.header}>
 			<div className={classes.headeritems}>
-				<a href="/" className={classes.name}>
+				<Link to="/home" className={classes.name}>
 					<span>F</span>lashy
-				</a>
+				</Link>
 				<i className={iconClasses} onClick={toggleNav}></i>
 			</div>
 
 			<div className={backdropClasses}></div>
 
 			<nav className={navClasses}>
+				<div>
+					{userObj && (
+						<Link to="/home" onClick={logoutUser} className={classes.logout}>
+							Logout
+						</Link>
+					)}
+				</div>
 				<ul className={classes.navlist}>
 					<li>
 						<Link to="/profile">Profile</Link>
@@ -45,6 +68,9 @@ function Header() {
 						<Link to="/study">Study</Link>
 					</li>
 				</ul>
+				<p className={classes.copy}>
+					&copy; <span>{copyYear}</span> Jan Reichherzer. Feel free to use.
+				</p>
 			</nav>
 			<Outlet />
 		</header>

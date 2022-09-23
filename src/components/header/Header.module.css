@@ -66,8 +66,10 @@
 	width: 0;
 	height: 100vh;
 	display: flex;
-	justify-content: flex-start;
-	align-items: center;
+	padding: 2rem 0;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: flex-start;
 	transition: 0.4s ease-out;
 	z-index: 9998;
 }
@@ -75,7 +77,6 @@
 .navlist {
 	list-style: none;
 	width: 100%;
-	margin-left: 2.4rem;
 }
 
 .navlist li:not(:last-child) {
@@ -90,4 +91,27 @@
 
 .visible {
 	width: 200px;
+	padding: 2rem;
+}
+
+.copy {
+	font-size: 1rem;
+	color: #845ef7;
+}
+
+.logout:link,
+.logout:visited {
+	color: #f1f3f5;
+	text-decoration: none;
+	font-size: 1.2rem;
+	letter-spacing: 1px;
+	padding: .5rem 1rem;
+	border-radius: 10px;
+	border: 2px solid #f1f3f5;
+	transition:  all 0.2s;
+}
+
+.logout:hover {
+	background-color: #f1f3f5;
+	color: #6741d9;
 }

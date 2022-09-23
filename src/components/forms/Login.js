@@ -1,10 +1,34 @@
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { useRef } from "react";
+import firebaseAuth from "../firebase/Firebase";
+
 import classes from "./Form.module.css";
 
 function Login() {
+	const navigate = useNavigate();
+	const email = useRef("");
+	const password = useRef("");
+
+	const loginUser = (e) => {
+		e.preventDefault();
+		signInWithEmailAndPassword(
+			firebaseAuth,
+			email.current.value,
+			password.current.value
+		)
+			.then((curUser) => {
+				navigate("/test");
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
+
 	return (
 		<div className={classes.formcontainer}>
 			<h3>Login</h3>
-			<form className={classes.form}>
+			<form className={classes.form} onSubmit={loginUser}>
 				<label className={classes.label} htmlFor="emaillogin">
 					Email
 				</label>
@@ -15,6 +39,7 @@ function Login() {
 					id="emaillogin"
 					name="email"
 					placeholder="Enter Email"
+					ref={email}
 				/>
 				<label className={classes.label} htmlFor="passlogin">
 					Password
@@ -26,6 +51,7 @@ function Login() {
 					id="passlogin"
 					name="password"
 					placeholder="Enter Password"
+					ref={password}
 				/>
 				<button className={classes.button} type="submit">
 					Login
