@@ -13,10 +13,13 @@ function ProfilePage({ userObj }) {
 
 			<ul className={classes.list}>
 				<li className={classes.listItem}>
+					<Link to="/profile/study">Study</Link>
+				</li>
+				<li className={classes.listItem}>
 					<Link to="/profile/add-card">Add new Card</Link>
 				</li>
 				<li className={classes.listItem}>
-					<Link to="/profile/all-cards">View all Cards</Link>
+					<Link to="/profile/cards">View all Cards</Link>
 				</li>
 			</ul>
 		</section>

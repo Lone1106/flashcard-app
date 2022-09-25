@@ -2,13 +2,19 @@ import { useState } from "react";
 
 import classes from "./Form.module.css";
 
-function AddCard() {
+function AddCard({ data }) {
 	const [front, setFront] = useState("");
 	const [back, setBack] = useState("");
 
 	const newCard = (e) => {
 		e.preventDefault();
-		console.log(front, back);
+		let cardItem = {
+			id: data.length + 1,
+			front,
+			back,
+		};
+
+		data.push(cardItem);
 		setFront("");
 		setBack("");
 	};

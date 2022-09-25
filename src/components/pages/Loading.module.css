@@ -1,0 +1,36 @@
+.wrapper {
+	text-align: center;
+}
+
+.text {
+	color: var(--color-main);
+	letter-spacing: 1px;
+	font-size: 2rem;
+}
+
+.spinner {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 2rem;
+}
+.spinner::after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid var(--color-main);
+  border-color: var(--color-main) transparent var(--color-main) transparent;
+  animation: spinn 1.5s linear infinite;
+}
+
+@keyframes spinn {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

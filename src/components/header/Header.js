@@ -27,6 +27,8 @@ function Header({ userObj }) {
 		? `${classes.backdrop} ${classes.backdropvisible}`
 		: `${classes.backdrop}`;
 
+	let linkDest = userObj ? "/profile" : "/home";
+
 	const logoutUser = () => {
 		signOut(firebaseAuth)
 			.then(() => {
@@ -41,7 +43,7 @@ function Header({ userObj }) {
 	return (
 		<header className={classes.header}>
 			<div className={classes.headeritems}>
-				<Link to="/home" className={classes.name}>
+				<Link to={linkDest} className={classes.name}>
 					<span>F</span>lashy
 				</Link>
 				<i className={iconClasses} onClick={toggleNav}></i>
@@ -65,7 +67,7 @@ function Header({ userObj }) {
 						<Link to="/profile/add-card">Add card</Link>
 					</li>
 					<li>
-						<Link to="/profile/all-cards">Cards</Link>
+						<Link to="/profile/cards">Cards</Link>
 					</li>
 					<li>
 						<Link to="/profile/study">Study</Link>

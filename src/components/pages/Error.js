@@ -1,5 +1,7 @@
+import classes from "./Error.module.css";
+
 function ErrorPage() {
-	return <h1>This page does not exist</h1>;
+	return <p className={classes.error}>This page does not exist. <br /> Please check again!</p>;
 }
 
 export default ErrorPage;
