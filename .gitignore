@@ -13,7 +13,7 @@
 
 # misc
 /public/env.js
-/src/components/firebase.js
+.env
 .DS_Store
 .env.local
 .env.development.local
