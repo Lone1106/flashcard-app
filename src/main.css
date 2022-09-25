@@ -1,3 +1,12 @@
+:root {
+	--color-main: #f08c00;
+	--color-light: #f76707;
+	--color-bg: #f1f3f5;
+	--color-dark: #868e96;
+	--color-font: #343a40;
+	--color-error: #c92a2a;
+}
+
 * {
 	padding: 0;
 	margin: 0;
@@ -7,6 +16,7 @@
 html {
 	font-size: 82.5%;
 	font-family: sans-serif;
+	color: var(--color-font);
 }
 
 main {
@@ -22,7 +32,7 @@ main {
 	min-width: 200px;
 	max-width: 600px;
 	height: 100vh;
-	background-color: #f1f3f5;
+	background-color: var(--color-bg);
 	margin: auto;
 	overflow: hidden;
 	border-radius: 6px;
@@ -34,18 +44,25 @@ h1 {
 	font-weight: lighter;
 	text-align: center;
 	font-style: italic;
+
 }
 
 h1 span {
 	font-weight: normal;
-
 	font-size: 12rem;
-	color: #6741d9;
+	color: var(--color-main);
 }
 
 h3 {
 	font-size: 3rem;
 	margin-bottom: 4rem;
+}
+
+h4 {
+	font-size: 1.4rem;
+	color: var(--color-main);
+	letter-spacing: .5px;
+	margin-bottom: .4rem;
 }
 
 @media (max-width: 75em) {

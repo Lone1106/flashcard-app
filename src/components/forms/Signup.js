@@ -1,31 +1,43 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { useRef } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import firebaseAuth from "../firebase/Firebase";
 import classes from "./Form.module.css";
 
 function Signup() {
 	const navigate = useNavigate();
-	const email = useRef("");
-	const password = useRef("");
-	const confPassword = useRef("");
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [confPassword, setConfPassword] = useState("");
+	const [error, setError] = useState("");
 
 	const createUser = (e) => {
 		e.preventDefault();
-		createUserWithEmailAndPassword(
-			firebaseAuth,
-			email.current.value,
-			password.current.value
-		)
+
+		if (password.length < 8) {
+			setError("Password must be at least 8 characters long!");
+			return;
+		}
+
+		if (password !== confPassword) {
+			setError("Passwords dont match!");
+			return;
+		}
+
+		createUserWithEmailAndPassword(firebaseAuth, email, password)
 			.then((userCred) => {
 				let user = userCred.user;
 				console.log(user);
-				navigate("/test");
+				navigate("/profile");
 			})
 			.catch((err) => {
 				console.log(err);
 			});
 	};
+
+	useEffect(() => {
+		setError("");
+	}, [email, password, confPassword]);
 
 	return (
 		<div className={classes.formcontainer}>
@@ -41,7 +53,9 @@ function Signup() {
 					id="emailsignup"
 					name="email"
 					placeholder="Enter Email"
-					ref={email}
+					onChange={(e) => {
+						setEmail(e.target.value);
+					}}
 				/>
 				<label className={classes.label} htmlFor="passsignup">
 					Password
@@ -53,7 +67,9 @@ function Signup() {
 					id="passsignup"
 					name="password"
 					placeholder="Enter Password"
-					ref={password}
+					onChange={(e) => {
+						setPassword(e.target.value);
+					}}
 				/>
 				<label className={classes.label} htmlFor="passconf">
 					Confirm Password
@@ -65,11 +81,14 @@ function Signup() {
 					id="passconf"
 					name="password"
 					placeholder="Confirm Password"
-					ref={confPassword}
+					onChange={(e) => {
+						setConfPassword(e.target.value);
+					}}
 				/>
 				<button className={classes.button} type="submit">
 					Signup
 				</button>
+				<p className={classes.error}>{error}</p>
 			</form>
 		</div>
 	);

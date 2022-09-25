@@ -19,20 +19,21 @@
 .signup:link,
 .signup:visited {
 	margin-bottom: 1rem;
-	background-color: #6741d9;
-	color: #f1f3f5;
+	background-color: var(--color-main);
+	color: var(--color-bg);
 }
 
 .signup:hover {
-	background-color: #845ef7;
+	background-color: var(--color-light);
 }
 
 .login:link,
 .login:visited {
 	background-color: #fff;
+	color: var(--color-font);
 }
 
 .login:hover{
-	background-color: #868e96;
-	color: #f1f3f5;
+	background-color: var(--color-dark);
+	color: var(--color-bg);
 }

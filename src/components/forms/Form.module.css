@@ -29,16 +29,16 @@
 	outline: none;
 	margin-bottom: 2rem;
 	font-size: inherit;
-	background-color: #f1f3f5;
+	background-color: var(--color-bg);
 	transition: 0.2s all;
 }
 
 .input:focus {
-	border: 3px solid #845ef7;
+	border-bottom: 3px solid var(--color-light);
 }
 
 .input:focus:invalid {
-	border: 3px solid red;
+	border-bottom: 3px solid var(--color-error);
 }
 
 .button {
@@ -47,8 +47,8 @@
 	margin-bottom: 2rem;
 	border-radius: 6px;
 	border: none;
-	background-color: #6741d9;
-	color: #f1f3f5;
+	background-color: var(--color-main);
+	color: var(--color-bg);
 	font-size: inherit;
 	font-weight: bold;
 	letter-spacing: 1px;
@@ -57,24 +57,32 @@
 }
 
 .button:hover {
-	background-color: #845ef7;
+	background-color: var(--color-light);
 }
 
 .text {
 	text-align: center;
 	font-size: 1rem;
-	color: #868e96;
+	color: var(--color-dark);
 }
 
 .link:link,
 .link:visited {
 	text-decoration: none;
-	color: #845ef7;
+	color: var(--color-light);
 	font-weight: bold;
 	transition: color 0.2s;
 }
 
 .link:hover,
 .link:active {
-	color: #6741d9;
+	color: var(--color-main);
+}
+
+.error {
+	text-align: center;
+	font-weight: bold;
+	color: var(--color-error);
+	width: 100%;
+	margin-bottom: 2rem;
 }

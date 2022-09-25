@@ -62,10 +62,13 @@ function Header({ userObj }) {
 						<Link to="/profile">Profile</Link>
 					</li>
 					<li>
-						<Link to="/cards">Cards</Link>
+						<Link to="/profile/add-card">Add card</Link>
 					</li>
 					<li>
-						<Link to="/study">Study</Link>
+						<Link to="/profile/all-cards">Cards</Link>
+					</li>
+					<li>
+						<Link to="/profile/study">Study</Link>
 					</li>
 				</ul>
 				<p className={classes.copy}>

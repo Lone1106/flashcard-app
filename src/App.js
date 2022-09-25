@@ -8,6 +8,7 @@ import Login from "./components/forms/Login";
 import Profile from "./components/pages/Profile";
 import Home from "./components/pages/Home";
 import ErrorPage from "./components/pages/Error";
+import AddCard from "./components/forms/AddCard";
 import "./main.css";
 
 function App() {
@@ -25,9 +26,20 @@ function App() {
 					<Route path="*" element={<ErrorPage />} />
 					<Route path="/signup" exact element={<Signup />} />
 					<Route path="/login" exact element={<Login />} />
-					{/*TEST ROUTES WILL BE REPLACED*/}
+
 					{user && (
-						<Route path="/test" exact element={<Profile userObj={user} />} />
+						<>
+							<Route
+								path="/profile"
+								exact
+								element={<Profile userObj={user} />}
+							/>
+							<Route
+								path="/profile/add-card"
+								exact
+								element={<AddCard />}
+							/>
+						</>
 					)}
 				</Routes>
 			</main>

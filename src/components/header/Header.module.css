@@ -1,7 +1,7 @@
 .header {
 	width: 100%;
-	background-color: #6741d9;
-	color: #f1f3f5;
+	background-color: var(--color-font);
+	color: var(--color-bg);
 	padding: 2rem;
 	margin: auto;
 	height: 5rem;
@@ -38,7 +38,7 @@
 
 .name:link,
 .name:visited {
-	color: #f1f3f5;
+	color: var(--color-bg);
 	text-decoration: none;
 	font-size: 1.6rem;
 	letter-spacing: 1px;
@@ -56,10 +56,11 @@
 	z-index: 9999;
 	transition: 0.3s;
 	cursor: pointer;
+	color: var(--color-bg);
 }
 
 .menu {
-	background-color: #6741d9;
+	background-color: var(--color-font);
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -80,13 +81,18 @@
 }
 
 .navlist li:not(:last-child) {
-	margin-bottom: 2.4rem;
+	margin-bottom: 5rem;
 }
 
 .navlist li a:link,
 .navlist li a:visited {
 	text-decoration: none;
-	color: #f1f3f5;
+	color: var(--color-bg);
+	transition: color 0.2s;
+}
+
+.navlist li a:hover {
+	color: var(--color-light);
 }
 
 .visible {
@@ -96,22 +102,22 @@
 
 .copy {
 	font-size: 1rem;
-	color: #845ef7;
+	color: var(--color-dark);
 }
 
 .logout:link,
 .logout:visited {
-	color: #f1f3f5;
+	color: var(--color-bg);
 	text-decoration: none;
 	font-size: 1.2rem;
 	letter-spacing: 1px;
-	padding: .5rem 1rem;
+	padding: 0.5rem 1rem;
 	border-radius: 10px;
-	border: 2px solid #f1f3f5;
-	transition:  all 0.2s;
+	border: 2px solid var(--color-bg);
+	transition: all 0.2s;
 }
 
 .logout:hover {
-	background-color: #f1f3f5;
-	color: #6741d9;
+	background-color: var(--color-bg);
+	color: var(--color-main);
 }

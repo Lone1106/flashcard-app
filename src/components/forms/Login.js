@@ -1,29 +1,31 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { useRef } from "react";
+import { useState, useEffect } from "react";
 import firebaseAuth from "../firebase/Firebase";
 
 import classes from "./Form.module.css";
 
 function Login() {
 	const navigate = useNavigate();
-	const email = useRef("");
-	const password = useRef("");
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [error, setError] = useState("");
 
 	const loginUser = (e) => {
 		e.preventDefault();
-		signInWithEmailAndPassword(
-			firebaseAuth,
-			email.current.value,
-			password.current.value
-		)
+		signInWithEmailAndPassword(firebaseAuth, email, password)
 			.then((curUser) => {
-				navigate("/test");
+				navigate("/profile");
 			})
 			.catch((err) => {
 				console.log(err);
+				setError("Data does not match any user!");
 			});
 	};
+
+	useEffect(() => {
+		setError("");
+	}, [email, password]);
 
 	return (
 		<div className={classes.formcontainer}>
@@ -39,7 +41,10 @@ function Login() {
 					id="emaillogin"
 					name="email"
 					placeholder="Enter Email"
-					ref={email}
+					value={email}
+					onChange={(e) => {
+						setEmail(e.target.value);
+					}}
 				/>
 				<label className={classes.label} htmlFor="passlogin">
 					Password
@@ -51,11 +56,15 @@ function Login() {
 					id="passlogin"
 					name="password"
 					placeholder="Enter Password"
-					ref={password}
+					value={password}
+					onChange={(e) => {
+						setPassword(e.target.value);
+					}}
 				/>
 				<button className={classes.button} type="submit">
 					Login
 				</button>
+				<p className={classes.error}>{error}</p>
 			</form>
 			<p className={classes.text}>
 				Dont have an account yet?{" "}
