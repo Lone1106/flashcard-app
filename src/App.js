@@ -11,6 +11,7 @@ import ErrorPage from "./components/pages/Error";
 import AddCard from "./components/forms/AddCard";
 import Cards from "./components/card/Cards";
 import Loading from "./components/pages/Loading";
+import Navigation from "./components/navigation/Navigation";
 import "./main.css";
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
 	return (
 		<div className="main-container">
 			<Header userObj={user} />
+			{user && <Navigation />}
 			<main>
 				{loading && <Loading />}
 				{!loading && (

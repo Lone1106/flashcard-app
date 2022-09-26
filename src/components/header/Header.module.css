@@ -18,24 +18,6 @@
 	align-items: center;
 }
 
-.backdrop {
-	width: 100%;
-	height: 100vh;
-	background-color: rgba(0, 0, 0, 0.85);
-	position: absolute;
-	top: 0;
-	right: 0;
-	transition: 0.2s ease-out;
-	opacity: 0;
-	visibility: hidden;
-	z-index: 9997;
-}
-
-.backdropvisible {
-	opacity: 1;
-	visibility: visible;
-}
-
 .name:link,
 .name:visited {
 	color: var(--color-bg);
@@ -50,59 +32,6 @@
 .name span {
 	font-weight: normal;
 	font-size: 2.4rem;
-}
-
-.icon {
-	z-index: 9999;
-	transition: 0.3s;
-	cursor: pointer;
-	color: var(--color-bg);
-}
-
-.menu {
-	background-color: var(--color-font);
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 0;
-	height: 100vh;
-	display: flex;
-	padding: 2rem 0;
-	flex-direction: column;
-	justify-content: space-between;
-	align-items: flex-start;
-	transition: 0.4s ease-out;
-	z-index: 9998;
-}
-
-.navlist {
-	list-style: none;
-	width: 100%;
-}
-
-.navlist li:not(:last-child) {
-	margin-bottom: 5rem;
-}
-
-.navlist li a:link,
-.navlist li a:visited {
-	text-decoration: none;
-	color: var(--color-bg);
-	transition: color 0.2s;
-}
-
-.navlist li a:hover {
-	color: var(--color-light);
-}
-
-.visible {
-	width: 200px;
-	padding: 2rem;
-}
-
-.copy {
-	font-size: 1rem;
-	color: var(--color-dark);
 }
 
 .logout:link,

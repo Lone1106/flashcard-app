@@ -1,4 +1,5 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import firebaseAuth from "../firebase/Firebase";
@@ -68,9 +69,9 @@ function Login() {
 			</form>
 			<p className={classes.text}>
 				Dont have an account yet?{" "}
-				<a className={classes.link} href="#signup">
+				<Link className={classes.link} to="/signup">
 					Signup now!
-				</a>
+				</Link>
 			</p>
 		</div>
 	);

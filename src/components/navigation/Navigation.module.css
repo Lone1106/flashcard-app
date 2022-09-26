@@ -1,0 +1,33 @@
+.navigation {
+	background-color: var(--color-font);
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	padding: 2rem 5rem;
+	transform: translateY(50px);
+}
+
+.navlist {
+	display: flex;
+	list-style: none;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.navlist li a:link,
+.navlist li a:visited {
+	color: var(--color-bg);
+	font-size: 3rem;
+	transform: translateY(-60px);
+	display: inline-block;
+	background-color: var(--color-main);
+	border-radius: 10px;
+	padding: 1rem;
+	transition: all 0.2s;
+}
+
+.navlist li a:hover {
+	background-color: var(--color-light);
+	transform: translateY(-70px);
+}
