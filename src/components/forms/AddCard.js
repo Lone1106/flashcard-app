@@ -1,20 +1,23 @@
 import { useState } from "react";
+import { app } from "../firebase/Firebase";
+import { getFirestore, collection, addDoc } from "firebase/firestore/lite";
 
 import classes from "./Form.module.css";
 
-function AddCard({ data }) {
+function AddCard({ userObj }) {
 	const [front, setFront] = useState("");
 	const [back, setBack] = useState("");
+	const db = getFirestore(app);
 
 	const newCard = (e) => {
 		e.preventDefault();
-		let cardItem = {
-			id: data.length + 1,
-			front,
-			back,
-		};
+		const coll = collection(db, "cards");
+		addDoc(coll, {
+			frontside: front,
+			backside: back,
+			userEntry: userObj.uid,
+		});
 
-		data.push(cardItem);
 		setFront("");
 		setBack("");
 	};

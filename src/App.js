@@ -19,34 +19,6 @@ function App() {
 		onUserChanged: true,
 	});
 
-	const DUMMY = [
-		{
-			id: 1,
-			front: "Morgen",
-			back: "朝",
-		},
-		{
-			id: 2,
-			front: "Abend",
-			back: "夜",
-		},
-		{
-			id: 3,
-			front: "Mittag",
-			back: "日中",
-		},
-		{
-			id: 4,
-			front: "Essen",
-			back: "食べ物",
-		},
-		{
-			id: 5,
-			front: "Ich",
-			back: "僕",
-		},
-	];
-
 	return (
 		<div className="main-container">
 			<Header userObj={user} />
@@ -71,12 +43,12 @@ function App() {
 								<Route
 									path="/profile/add-card"
 									exact
-									element={<AddCard data={DUMMY} />}
+									element={<AddCard userObj={user} />}
 								/>
 								<Route
 									path="/profile/cards"
 									exact
-									element={<Cards data={DUMMY} />}
+									element={<Cards userObj={user} />}
 								/>
 							</>
 						)}
