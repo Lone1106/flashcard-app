@@ -1,13 +1,9 @@
 import classes from "./Cards.module.css";
 
 function Card({ displayText, id }) {
-	const editCard = () => {
-		console.log("edited");
-	};
+	const editCard = () => {};
 
-	const deleteCard = () => {
-		console.log("deleted");
-	};
+	const deleteCard = () => {};
 
 	return (
 		<figure className={classes.card}>

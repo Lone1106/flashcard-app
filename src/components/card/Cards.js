@@ -1,38 +1,32 @@
-import {
-	getFirestore,
-	collection,
-	getDocs,
-	query,
-	where,
-} from "firebase/firestore/lite";
-import { app } from "../firebase/Firebase";
+import { collection, getDocs, query, where } from "firebase/firestore/lite";
 import { useState, useEffect } from "react";
+import { db } from "../firebase/Firebase";
 import Card from "./Card";
 
 import classes from "./Cards.module.css";
 
+const getAllCards = async (user) => {
+	const q = query(collection(db, "cards"), where("userEntry", "==", user.uid));
+	const snapData = await getDocs(q);
+	return snapData;
+};
+
 function Cards({ userObj }) {
-	const db = getFirestore(app);
-	const [allCards, setAllCards] = useState([]);
-	const arr = [];
+	const [cards, setCards] = useState([]);
 
-	const getAllCards = async () => {
-		const q = query(
-			collection(db, "cards"),
-			where("userEntry", "==", userObj.uid)
-		);
-		const snap = await getDocs(q);
-		snap.forEach((doc) => {
-			arr.push(doc.data());
+	useEffect(() => {
+		getAllCards(userObj).then((data) => {
+			const arr = [];
+			data.forEach((doc) => {
+				arr.push(doc.data());
+			});
+			setCards(arr);
 		});
-		console.log(arr);
-	};
-
-
+	}, []);
 
 	return (
 		<section className={classes.cards}>
-			{allCards.map((item) => {
+			{cards.map((item) => {
 				return <Card displayText={item.frontside} key={item.id} id={item.id} />;
 			})}
 		</section>

@@ -1,13 +1,12 @@
 import { useState } from "react";
-import { app } from "../firebase/Firebase";
-import { getFirestore, collection, addDoc } from "firebase/firestore/lite";
+import { collection, addDoc } from "firebase/firestore/lite";
+import { db } from "../firebase/Firebase";
 
 import classes from "./Form.module.css";
 
 function AddCard({ userObj }) {
 	const [front, setFront] = useState("");
 	const [back, setBack] = useState("");
-	const db = getFirestore(app);
 
 	const newCard = (e) => {
 		e.preventDefault();
