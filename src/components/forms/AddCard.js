@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { collection, addDoc } from "firebase/firestore/lite";
+import { setDoc, doc } from "firebase/firestore/lite";
 import { db } from "../firebase/Firebase";
+import uuid from "react-uuid";
 
 import classes from "./Form.module.css";
 
@@ -10,12 +11,14 @@ function AddCard({ userObj }) {
 
 	const newCard = (e) => {
 		e.preventDefault();
-		const coll = collection(db, "cards");
-		addDoc(coll, {
+
+		let docId = uuid()
+		setDoc(doc(db, "cards", docId), {
 			frontside: front,
 			backside: back,
 			userEntry: userObj.uid,
-		});
+			idRef: docId
+		})
 
 		setFront("");
 		setBack("");

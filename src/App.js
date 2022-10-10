@@ -12,6 +12,7 @@ import AddCard from "./components/forms/AddCard";
 import Cards from "./components/card/Cards";
 import Loading from "./components/pages/Loading";
 import Navigation from "./components/navigation/Navigation";
+import Study from "./components/study/Study";
 import "./main.css";
 
 function App() {
@@ -50,6 +51,7 @@ function App() {
 									exact
 									element={<Cards userObj={user} />}
 								/>
+								<Route path="/profile/study" exact element={<Study />} />
 							</>
 						)}
 					</Routes>

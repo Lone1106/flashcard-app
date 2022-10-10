@@ -1,6 +1,6 @@
 .uid {
 	color: var(--color-dark);
-	font-size: .8rem;
+	font-size: 0.8rem;
 }
 
 .info {
@@ -14,34 +14,11 @@
 	height: 300px;
 	padding: 0 3rem;
 	text-align: center;
+	display: flex;
+	text-align: center;
+	align-items: center;
 }
 
-.top {
+.main {
 	width: 100%;
-	margin-bottom: 4rem;
-}
-
-.list {
-	list-style: none;
-	font-size: 1.4rem;
-}
-
-.listItem:not(:last-child) {
-	margin-bottom: 1rem;
-}
-
-.listItem a:link,
-.listItem a:visited {
-	text-decoration: none;
-	color: var(--color-bg);
-	padding: 1rem;
-	border-radius: 10px;
-	background-color: var(--color-main);
-	width: 100%;
-	display: block;
-	transition: all 0.2s;
-}
-
-.listItem a:hover {
-	background-color: var(--color-light);
 }

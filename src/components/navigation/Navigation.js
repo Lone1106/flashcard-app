@@ -8,22 +8,22 @@ function Navigation() {
 			<ul className={classes.navlist}>
 				<li>
 					<Link to="/profile">
-						<i className="fa-solid fa-user"></i>
+						<p>Profile</p>
 					</Link>
 				</li>
 				<li>
 					<Link to="/profile/cards">
-						<i className="fa-regular fa-copy"></i>
+						<p>Cards</p>
 					</Link>
 				</li>
 				<li>
 					<Link to="/profile/add-card">
-						<i className="fa-solid fa-plus"></i>
+						<p>Add</p>
 					</Link>
 				</li>
 				<li>
 					<Link to="/profile/study">
-						<i className="fa-solid fa-repeat"></i>
+						<p>Study</p>
 					</Link>
 				</li>
 			</ul>

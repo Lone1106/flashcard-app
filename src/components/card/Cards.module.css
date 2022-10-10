@@ -51,3 +51,7 @@
 	color: var(--color-bg);
 }
 
+.nocards {
+	text-align: center;
+	margin-top: 2rem;
+}

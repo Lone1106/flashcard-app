@@ -17,8 +17,11 @@
 
 .navlist li a:link,
 .navlist li a:visited {
+	text-align: center;
+	text-decoration: none;
 	color: var(--color-bg);
-	font-size: 3rem;
+	font-size: 1.6rem;
+	width: 100px;
 	transform: translateY(-60px);
 	display: inline-block;
 	background-color: var(--color-main);
