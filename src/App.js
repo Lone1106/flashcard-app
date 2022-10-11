@@ -51,7 +51,11 @@ function App() {
 									exact
 									element={<Cards userObj={user} />}
 								/>
-								<Route path="/profile/study" exact element={<Study />} />
+								<Route
+									path="/profile/study"
+									exact
+									element={<Study userObj={user} />}
+								/>
 							</>
 						)}
 					</Routes>

@@ -7,4 +7,6 @@ This is a very basic react flashcard app that lets you:
 - Delete Cards
 - Study Cards
 
+The flashcards are currently intented for vocabulary use, hence the length is capped at 50 signs!
+
 *Design and Error handling arent done yet!*

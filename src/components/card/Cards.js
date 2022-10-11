@@ -1,22 +1,10 @@
-import {
-	collection,
-	getDocs,
-	query,
-	where,
-	doc,
-	deleteDoc,
-} from "firebase/firestore/lite";
+import { doc, deleteDoc } from "firebase/firestore/lite";
+import { getAllCards } from "../firebase/Firebase";
 import { useState, useEffect } from "react";
 import { db } from "../firebase/Firebase";
 import Card from "./Card";
 
 import classes from "./Cards.module.css";
-
-const getAllCards = async (user) => {
-	const q = query(collection(db, "cards"), where("userEntry", "==", user.uid));
-	const snapData = await getDocs(q);
-	return snapData;
-};
 
 function Cards({ userObj }) {
 	const [cards, setCards] = useState([]);
@@ -36,7 +24,6 @@ function Cards({ userObj }) {
 			setCards(arr);
 		});
 	}, []);
-
 	return (
 		<section className={classes.cards}>
 			{cards.length === 0 && (

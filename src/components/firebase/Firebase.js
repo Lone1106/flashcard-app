@@ -1,6 +1,12 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore/lite";
+import {
+  getFirestore,
+  query,
+  where,
+  collection,
+  getDocs,
+} from "firebase/firestore/lite";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API,
@@ -14,5 +20,19 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 const firebaseAuth = getAuth(app);
 export const db = getFirestore(app);
+
+export const getAllCards = async (user) => {
+  try {
+      const q = query(
+    collection(db, "cards"),
+    where("userEntry", "==", user.uid)
+  );
+  const snapData = await getDocs(q);
+  return snapData;
+  } catch(e) {
+    alert(e);
+  }
+
+};
 
 export default firebaseAuth;

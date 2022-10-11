@@ -38,6 +38,7 @@ function AddCard({ userObj }) {
 					placeholder="Add text"
 					onChange={(e) => setFront(e.target.value)}
 					value={front}
+					maxLength="50"
 				/>
 				<label className={classes.label} htmlFor="backside">
 					Backside
@@ -49,6 +50,7 @@ function AddCard({ userObj }) {
 					placeholder="Add text"
 					onChange={(e) => setBack(e.target.value)}
 					value={back}
+					maxLength="50"
 				/>
 				<button className={classes.button} type="submit">
 					Add
