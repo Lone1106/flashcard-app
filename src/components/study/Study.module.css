@@ -37,6 +37,10 @@
 	width: 100%;
 }
 
+.backside {
+	opacity: 0;
+}
+
 .frontside {
 	border-bottom: 2px solid var(--color-dark);
 }
@@ -71,4 +75,8 @@
 
 .buttonRe {
 	background-color: var(--color-font);
+}
+
+.visible {
+	opacity: 1;
 }

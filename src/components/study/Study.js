@@ -5,16 +5,12 @@ import classes from "./Study.module.css";
 
 function Study({ userObj }) {
 	const [cards, setCards] = useState([]);
-	const cardsLength = cards.length;
-	const [backText, setBackText] = useState();
-
-	const revealBack = () => {
-		setBackText("Backside text");
-	};
-
-	const wrongAnswer = () => {};
-
-	const correctAnswer = () => {};
+	const backIsHidden = `${classes.backside}`;
+	const backIsVisible = `${classes.backside} ${classes.visible}`;
+	const [backVis, setBackVis] = useState(backIsHidden);
+	const DUMMY = [{ frontside: "", backside: "" }];
+	let currCard = cards.length === 0 ? DUMMY : cards[0];
+	let cardCount = cards.length === 0 ? 0 : cards.length;
 
 	useEffect(() => {
 		getAllCards(userObj).then((data) => {
@@ -26,15 +22,36 @@ function Study({ userObj }) {
 		});
 	}, []);
 
+	const revealBack = () => {
+		setBackVis(backIsVisible);
+	};
+
+	const wrongAnswer = () => {
+		setBackVis(backIsHidden);
+		setCards((prevData) => {
+			let newData = [...prevData];
+			newData.push(newData.shift());
+			return [...newData];
+		});
+	};
+
+	const correctAnswer = () => {
+		setBackVis(backIsHidden);
+		setCards((prevData) => {
+			let newData = prevData.filter((e, i) => i !== 0);
+			return [...newData];
+		});
+	};
+
 	return (
 		<section className={classes.study}>
 			<div className={classes.counter}>
-				<p>Cards Amount: {cardsLength}</p>
+				<p>Cards: {cardCount}</p>
 			</div>
 
 			<div className={classes.top}>
-				<p className={classes.frontside}>Frontside text</p>
-				<p className={classes.backside}>{backText}</p>
+				<p className={classes.frontside}>{currCard.frontside}</p>
+				<p className={backVis}>{currCard.backside}</p>
 			</div>
 
 			<div className={classes.bottom}>
