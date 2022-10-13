@@ -1,5 +1,6 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import firebaseAuth from "../firebase/Firebase";
 import classes from "./Form.module.css";
@@ -25,13 +26,11 @@ function Signup() {
 		}
 
 		createUserWithEmailAndPassword(firebaseAuth, email, password)
-			.then((userCred) => {
-				let user = userCred.user;
-				console.log(user);
+			.then(() => {
 				navigate("/profile");
 			})
 			.catch((err) => {
-				console.log(err);
+				setError("User already exists!")
 			});
 	};
 
@@ -90,6 +89,12 @@ function Signup() {
 				</button>
 				<p className={classes.error}>{error}</p>
 			</form>
+			<p className={classes.text}>
+				Already have an account?{" "}
+				<Link className={classes.link} to="/login">
+					Login here!
+				</Link>
+			</p>
 		</div>
 	);
 }

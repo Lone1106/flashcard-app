@@ -19,8 +19,7 @@ function Login() {
 				navigate("/profile");
 			})
 			.catch((err) => {
-				console.log(err);
-				setError("Data does not match any user!");
+				setError("User does not exist! Please recheck!");
 			});
 	};
 

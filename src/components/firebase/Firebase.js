@@ -23,16 +23,15 @@ export const db = getFirestore(app);
 
 export const getAllCards = async (user) => {
   try {
-      const q = query(
-    collection(db, "cards"),
-    where("userEntry", "==", user.uid)
-  );
-  const snapData = await getDocs(q);
-  return snapData;
-  } catch(e) {
-    alert(e);
+    const q = query(
+      collection(db, "cards"),
+      where("userEntry", "==", user.uid)
+    );
+    const snapData = await getDocs(q);
+    return snapData;
+  } catch (e) {
+    alert("Failed to fetch cards. Check connection.");
   }
-
 };
 
 export default firebaseAuth;
