@@ -10,4 +10,12 @@ This is a very basic react flashcard app that lets you:
 
 The flashcards are currently intented for vocabulary use, hence the length is capped at 50 signs!
 
-_The app isnt completely finnished yet, however all functionality has been implemented_
+Missing features:
+
+- Delete all cards
+- Delete user
+- Edit Flashcards
+- Email notifications
+- Change password
+
+_The app isnt completely finnished yet, however all basic functionality has been implemented._

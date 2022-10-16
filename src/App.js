@@ -1,4 +1,4 @@
-import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import firebaseAuth from "./components/firebase/Firebase";
 
@@ -16,12 +16,9 @@ import Study from "./components/study/Study";
 import "./main.css";
 
 function App() {
-	const [user, loading, error] = useAuthState(firebaseAuth, {
+	const [user, loading] = useAuthState(firebaseAuth, {
 		onUserChanged: true,
 	});
-	const navigate = useNavigate();
-
-	const navOnError = () => navigate("/error");
 
 	return (
 		<div className="main-container">
@@ -32,7 +29,6 @@ function App() {
 				{!loading && (
 					<Routes>
 						<Route exact path="/error" element={<ErrorPage />} />
-						{error && navOnError() }
 						<Route exact path="/" element={<Navigate to="/home" />} />
 						<Route path="/home" element={<Home />} />
 						{!loading && <Route path="*" element={<ErrorPage />} />}

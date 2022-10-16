@@ -15,6 +15,10 @@ function Cards({ userObj }) {
 		window.location.reload();
 	};
 
+	const deleteAllHandler = () => {
+		console.log("Deleted all cards");
+	};
+
 	useEffect(() => {
 		getAllCards(userObj).then((data) => {
 			const arr = [];
@@ -24,8 +28,14 @@ function Cards({ userObj }) {
 			setCards(arr);
 		});
 	}, []);
+
 	return (
 		<section className={classes.cards}>
+			{/*NOT IMPLEMENTED YET*/}
+			<button className={classes.delete} onClick={deleteAllHandler}>
+				Delete all cards
+			</button>
+			{/*NOT IMPLEMENTED YET*/}
 			{cards.length === 0 && (
 				<h4 className={classes.nocards}>There are no cards yet</h4>
 			)}

@@ -45,7 +45,6 @@
 	border-bottom: 2px solid var(--color-dark);
 }
 
-
 .buttonRe,
 .buttonR,
 .buttonF {
@@ -79,4 +78,11 @@
 
 .visible {
 	opacity: 1;
+}
+
+.done {
+	color: var(--color-main);
+	font-size: 2rem;
+	margin-top: auto;
+	margin-bottom: auto;
 }

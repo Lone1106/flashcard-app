@@ -45,26 +45,34 @@ function Study({ userObj }) {
 
 	return (
 		<section className={classes.study}>
-			<div className={classes.counter}>
-				<p>Cards: {cardCount}</p>
-			</div>
+			{cardCount === 0 && <p className={classes.done}>No more cards</p>}
 
-			<div className={classes.top}>
-				<p className={classes.frontside}>{currCard.frontside}</p>
-				<p className={backVis}>{currCard.backside}</p>
-			</div>
+			{cardCount >= 1 && (
+				<div className={classes.counter}>
+					<p>Cards: {cardCount}</p>
+				</div>
+			)}
 
-			<div className={classes.bottom}>
-				<button className={classes.buttonF} onClick={wrongAnswer}>
-					False
-				</button>
-				<button className={classes.buttonRe} onClick={revealBack}>
-					Reveal
-				</button>
-				<button className={classes.buttonR} onClick={correctAnswer}>
-					Right
-				</button>
-			</div>
+			{cardCount >= 1 && (
+				<div className={classes.top}>
+					<p className={classes.frontside}>{currCard.frontside}</p>
+					<p className={backVis}>{currCard.backside}</p>
+				</div>
+			)}
+
+			{cardCount >= 1 && (
+				<div className={classes.bottom}>
+					<button className={classes.buttonF} onClick={wrongAnswer}>
+						False
+					</button>
+					<button className={classes.buttonRe} onClick={revealBack}>
+						Reveal
+					</button>
+					<button className={classes.buttonR} onClick={correctAnswer}>
+						Right
+					</button>
+				</div>
+			)}
 		</section>
 	);
 }
