@@ -18,4 +18,6 @@ Missing features:
 - Email notifications
 - Change password
 
+[Preview here](https://harmonious-platypus-6d8124.netlify.app/home)
+
 _The app isnt completely finnished yet, however all basic functionality has been implemented._
