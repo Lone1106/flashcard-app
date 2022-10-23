@@ -41,6 +41,10 @@
 		padding: 1.6rem 1rem;
 	}
 
+	.navlist {
+		gap: 1rem;
+	}
+
 	.navlist li a:link,
 	.navlist li a:visited {
 		width: 80px;
