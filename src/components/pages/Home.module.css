@@ -35,7 +35,14 @@
 	color: var(--color-font);
 }
 
-.login:hover{
+.login:hover {
 	background-color: var(--color-dark);
 	color: var(--color-bg);
+}
+
+@media (max-width: 35em) {
+	.signup,
+	.login {
+		width: 150px;
+	}
 }
