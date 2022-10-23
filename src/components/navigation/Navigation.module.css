@@ -11,8 +11,9 @@
 .navlist {
 	display: flex;
 	list-style: none;
-	justify-content: space-between;
+	justify-content: center;
 	align-items: center;
+	gap: 3.6rem;
 }
 
 .navlist li a:link,
@@ -33,4 +34,17 @@
 .navlist li a:hover {
 	background-color: var(--color-light);
 	transform: translateY(-70px);
+}
+
+@media (max-width: 35em) {
+	.navigation {
+		padding: 1.6rem 1rem;
+	}
+
+	.navlist li a:link,
+	.navlist li a:visited {
+		width: 80px;
+		font-size: 1rem;
+		transform: translateY(-40px);
+	}
 }

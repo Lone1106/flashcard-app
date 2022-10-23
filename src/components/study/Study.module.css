@@ -86,3 +86,22 @@
 	margin-top: auto;
 	margin-bottom: auto;
 }
+
+@media (max-width: 35em) {
+	.study {
+		height: 400px;
+	}
+
+	.buttonRe,
+	.buttonR,
+	.buttonF {
+		width: 60px;
+		font-size: 1rem;
+		padding: 1rem 0.6rem;
+	}
+
+	.buttonRe,
+	.buttonF {
+		margin-right: 1rem;
+	}
+}

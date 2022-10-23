@@ -4,7 +4,7 @@
 
 .signup,
 .login {
-	width: 100%;
+	width: 300px;
 	padding: 1rem;
 	border-radius: 10px;
 	text-align: center;
@@ -14,6 +14,8 @@
 	letter-spacing: 1px;
 	font-size: 1.4rem;
 	transition: 0.2s all;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 .signup:link,

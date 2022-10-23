@@ -10,15 +10,19 @@
 }
 
 .formcontainer {
-	width: 90%;
+	width: 600px;
 	border-radius: 6px;
 	padding: 4rem;
 	background-color: #fff;
 	box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.3);
 }
 
-.label {
-	margin-bottom: 0.5rem;
+@media (max-width: 35em) {
+
+	.formcontainer {
+		width: 100%;
+		margin: 1rem;
+	}
 }
 
 .input {

@@ -16,7 +16,7 @@ function Card({ textFront, textBack, id, deleteOne }) {
 
 			<div className={classes.buttons}>
 				<button onClick={changeCard} className={classes.button}>
-					<i class="fa-solid fa-pen-to-square"></i>
+					<i className="fa-solid fa-pen-to-square"></i>
 				</button>
 				{/*NOT IMPLEMENTED YET*/}
 				<button onClick={deleteCard} className={classes.button}>

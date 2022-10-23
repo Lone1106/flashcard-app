@@ -29,13 +29,11 @@ main {
 }
 
 .main-container {
-	min-width: 200px;
-	max-width: 600px;
+	width:  100vw;
 	height: 100vh;
 	background-color: var(--color-bg);
 	margin: auto;
 	overflow: hidden;
-	border-radius: 6px;
 	position: relative;
 }
 
@@ -64,14 +62,6 @@ h4 {
 	color: var(--color-main);
 	letter-spacing: .5px;
 	margin-bottom: .4rem;
-}
-
-@media (max-width: 75em) {
-	.main-container {
-		min-width: 100%;
-		max-width: 100%;
-		border-radius: 0px;
-	}
 }
 
 @media (max-width: 35em) {
