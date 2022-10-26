@@ -1,4 +1,5 @@
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import firebaseAuth from "./components/firebase/Firebase";
 
@@ -19,6 +20,16 @@ function App() {
 	const [user, loading] = useAuthState(firebaseAuth, {
 		onUserChanged: true,
 	});
+	const [navigated, setNavigated] = useState(false);
+
+	const navigate = useNavigate();
+
+	useEffect(() => {
+		if (user && !navigated) {
+			navigate("/profile");
+			setNavigated(true);
+		}
+	}, [user]);
 
 	return (
 		<div className="main-container">

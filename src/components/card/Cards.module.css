@@ -2,6 +2,7 @@
 	width: 100%;
 	height: 100%;
 	overflow: auto;
+	position: relative;
 }
 
 .card {
@@ -72,4 +73,36 @@
 
 .delete:hover {
 	background-color: var(--color-light);
+}
+
+.spinner {
+	display: inline-block;
+	width: 80px;
+	height: 80px;
+	margin-bottom: 2rem;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.spinner::after {
+	content: " ";
+	display: block;
+	width: 50px;
+	height: 50px;
+	margin: 8px;
+	border-radius: 50%;
+	border: 6px solid var(--color-main);
+	border-color: var(--color-main) transparent var(--color-main) transparent;
+	animation: spinn 1.5s linear infinite;
+}
+
+@keyframes spinn {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
 }

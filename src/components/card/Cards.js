@@ -8,6 +8,7 @@ import classes from "./Cards.module.css";
 
 function Cards({ userObj }) {
 	const [cards, setCards] = useState([]);
+	const [isLoading, setIsLoading] = useState(true);
 
 	const deleteHandler = (cardId) => {
 		let docRef = doc(db, "cards", cardId);
@@ -26,6 +27,7 @@ function Cards({ userObj }) {
 				arr.push(doc.data());
 			});
 			setCards(arr);
+			setIsLoading(false);
 		});
 	}, []);
 
@@ -39,6 +41,7 @@ function Cards({ userObj }) {
 			{cards.length === 0 && (
 				<h4 className={classes.nocards}>There are no cards yet</h4>
 			)}
+			{isLoading && <div className={classes.spinner}></div>}
 			{cards.map((item) => {
 				return (
 					<Card
