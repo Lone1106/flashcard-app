@@ -7,17 +7,13 @@ This is a very basic react flashcard app that lets you:
 - View all Cards
 - Delete Cards
 - Study Cards
-
-The flashcards are currently intented for vocabulary use, hence the length is capped at 50 signs!
-
-Missing features:
-
-- Delete all cards
 - Delete user
-- Edit Flashcards
-- Email notifications
 - Change password
 
-[Preview here](https://harmonious-platypus-6d8124.netlify.app/)
+_Reauthentication isnt fully implemented yet hence deleting a user or chaning password doesnt work fully yet._
 
-_The app isnt completely finnished yet, however all basic functionality has been implemented._
+Missing important features:
+
+- Edit Flashcards
+
+[Preview here](https://harmonious-platypus-6d8124.netlify.app/)

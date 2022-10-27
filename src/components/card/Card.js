@@ -5,9 +5,7 @@ function Card({ textFront, textBack, id, deleteOne }) {
 		deleteOne(id);
 	};
 
-	const changeCard = () => {
-		console.log("Card changed!");
-	};
+	const changeCard = () => {};
 
 	return (
 		<figure className={classes.card}>
@@ -15,6 +13,7 @@ function Card({ textFront, textBack, id, deleteOne }) {
 			<div className={classes.text}>{textBack}</div>
 
 			<div className={classes.buttons}>
+				{/*NOT IMPLEMENTED YET*/}
 				<button onClick={changeCard} className={classes.button}>
 					<i className="fa-solid fa-pen-to-square"></i>
 				</button>
@@ -22,7 +21,6 @@ function Card({ textFront, textBack, id, deleteOne }) {
 				<button onClick={deleteCard} className={classes.button}>
 					<i className="fa-solid fa-trash"></i>
 				</button>
-				{/*NOT IMPLEMENTED YET*/}
 			</div>
 		</figure>
 	);

@@ -57,24 +57,6 @@
 	margin-top: 2rem;
 }
 
-.delete {
-	background-color: var(--color-main);
-	color: var(--color-bg);
-	letter-spacing: 0.5px;
-	border: none;
-	border-radius: 10px;
-	width: 300px;
-	margin: 0 auto 2rem auto;
-	padding: 0.5rem 1rem;
-	transition: background-color 0.3s;
-	cursor: pointer;
-	display: block;
-}
-
-.delete:hover {
-	background-color: var(--color-light);
-}
-
 .spinner {
 	display: inline-block;
 	width: 80px;

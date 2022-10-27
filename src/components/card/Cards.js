@@ -1,4 +1,4 @@
-import { doc, deleteDoc } from "firebase/firestore/lite";
+import { doc, deleteDoc, updateDoc } from "firebase/firestore/lite";
 import { getAllCards } from "../firebase/Firebase";
 import { useState, useEffect } from "react";
 import { db } from "../firebase/Firebase";
@@ -16,10 +16,6 @@ function Cards({ userObj }) {
 		window.location.reload();
 	};
 
-	const deleteAllHandler = () => {
-		console.log("Deleted all cards");
-	};
-
 	useEffect(() => {
 		getAllCards(userObj).then((data) => {
 			const arr = [];
@@ -33,11 +29,6 @@ function Cards({ userObj }) {
 
 	return (
 		<section className={classes.cards}>
-			{/*NOT IMPLEMENTED YET*/}
-			<button className={classes.delete} onClick={deleteAllHandler}>
-				Delete all cards
-			</button>
-			{/*NOT IMPLEMENTED YET*/}
 			{cards.length === 0 && (
 				<h4 className={classes.nocards}>There are no cards yet</h4>
 			)}
