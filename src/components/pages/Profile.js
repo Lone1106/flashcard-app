@@ -13,7 +13,7 @@ function ProfilePage({ userObj }) {
 	const navigate = useNavigate();
 
 	const reAuthUser = async () => {
-		let userProvidedPassword = await "testtest";
+		let userProvidedPassword = await prompt("Reenter password:");
 		const credential = await EmailAuthProvider.credential(
 			userObj.email,
 			userProvidedPassword

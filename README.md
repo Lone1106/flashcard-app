@@ -10,8 +10,6 @@ This is a very basic react flashcard app that lets you:
 - Delete user
 - Change password
 
-_Reauthentication isnt fully implemented yet hence deleting a user or chaning password doesnt work fully yet._
-
 Missing important features:
 
 - Edit Flashcards
