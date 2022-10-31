@@ -14,6 +14,7 @@ import Cards from "./components/card/Cards";
 import Loading from "./components/pages/Loading";
 import Navigation from "./components/navigation/Navigation";
 import Study from "./components/study/Study";
+import ChangeCard from "./components/forms/ChangeCard";
 import "./main.css";
 
 function App() {
@@ -62,6 +63,10 @@ function App() {
 									path="/profile/cards"
 									exact
 									element={<Cards userObj={user} />}
+								/>
+								<Route
+									path="/profile/cards/update/:cardId"
+									element={<ChangeCard />}
 								/>
 								<Route
 									path="/profile/study"

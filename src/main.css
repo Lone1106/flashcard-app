@@ -29,12 +29,16 @@ main {
 }
 
 .main-container {
-	width:  100vw;
+	width: 100vw;
 	height: 100vh;
 	background-color: var(--color-bg);
 	margin: auto;
 	overflow: hidden;
 	position: relative;
+}
+
+i {
+	font-size: 1.2rem;
 }
 
 h1 {
@@ -43,7 +47,6 @@ h1 {
 	font-weight: lighter;
 	text-align: center;
 	font-style: italic;
-
 }
 
 h1 span {
@@ -60,12 +63,11 @@ h3 {
 h4 {
 	font-size: 1.6rem;
 	color: var(--color-main);
-	letter-spacing: .5px;
-	margin-bottom: .4rem;
+	letter-spacing: 0.5px;
+	margin-bottom: 0.4rem;
 }
 
 @media (max-width: 35em) {
-
 	h1 {
 		font-size: 4rem;
 	}

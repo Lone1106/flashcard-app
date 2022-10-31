@@ -1,9 +1,9 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+
 import {
   getFirestore,
   query,
-  where,
   collection,
   getDocs,
 } from "firebase/firestore/lite";
@@ -21,12 +21,9 @@ export const app = initializeApp(firebaseConfig);
 const firebaseAuth = getAuth(app);
 export const db = getFirestore(app);
 
-export const getAllCards = async (user) => {
+export const getAllCards = async (userID) => {
   try {
-    const q = query(
-      collection(db, "cards"),
-      where("userEntry", "==", user.uid)
-    );
+    const q = query(collection(db, userID));
     const snapData = await getDocs(q);
     return snapData;
   } catch (e) {

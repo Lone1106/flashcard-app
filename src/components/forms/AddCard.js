@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef } from "react";
 import { setDoc, doc } from "firebase/firestore/lite";
 import { db } from "../firebase/Firebase";
 import uuid from "react-uuid";
@@ -6,22 +6,20 @@ import uuid from "react-uuid";
 import classes from "./Form.module.css";
 
 function AddCard({ userObj }) {
-	const [front, setFront] = useState("");
-	const [back, setBack] = useState("");
+	const front = useRef("");
+	const back = useRef("");
 
 	const newCard = (e) => {
 		e.preventDefault();
 
-		let docId = uuid()
-		setDoc(doc(db, "cards", docId), {
-			frontside: front,
-			backside: back,
-			userEntry: userObj.uid,
-			idRef: docId
-		})
+		let docId = uuid();
+		setDoc(doc(db, userObj.uid, docId), {
+			frontside: front.current.value,
+			backside: back.current.value,
+			idRef: docId,
+		});
 
-		setFront("");
-		setBack("");
+		e.target.reset()
 	};
 
 	return (
@@ -36,8 +34,7 @@ function AddCard({ userObj }) {
 					id="frontside"
 					type="text"
 					placeholder="Add text"
-					onChange={(e) => setFront(e.target.value)}
-					value={front}
+					ref={front}
 					maxLength="50"
 				/>
 				<label className={classes.label} htmlFor="backside">
@@ -48,8 +45,7 @@ function AddCard({ userObj }) {
 					id="backside"
 					type="text"
 					placeholder="Add text"
-					onChange={(e) => setBack(e.target.value)}
-					value={back}
+					ref={back}
 					maxLength="50"
 				/>
 				<button className={classes.button} type="submit">

@@ -1,11 +1,13 @@
+import { Link } from "react-router-dom";
+
 import classes from "./Cards.module.css";
 
 function Card({ textFront, textBack, id, deleteOne }) {
+	let cardLink = `/profile/cards/update/${id}`;
+
 	const deleteCard = () => {
 		deleteOne(id);
 	};
-
-	const changeCard = () => {};
 
 	return (
 		<figure className={classes.card}>
@@ -13,11 +15,9 @@ function Card({ textFront, textBack, id, deleteOne }) {
 			<div className={classes.text}>{textBack}</div>
 
 			<div className={classes.buttons}>
-				{/*NOT IMPLEMENTED YET*/}
-				<button onClick={changeCard} className={classes.button}>
+				<Link to={cardLink} className={classes.button}>
 					<i className="fa-solid fa-pen-to-square"></i>
-				</button>
-				{/*NOT IMPLEMENTED YET*/}
+				</Link>
 				<button onClick={deleteCard} className={classes.button}>
 					<i className="fa-solid fa-trash"></i>
 				</button>

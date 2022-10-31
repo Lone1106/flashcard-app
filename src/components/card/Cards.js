@@ -1,29 +1,33 @@
-import { doc, deleteDoc, updateDoc } from "firebase/firestore/lite";
+import { doc, deleteDoc } from "firebase/firestore/lite";
 import { getAllCards } from "../firebase/Firebase";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { db } from "../firebase/Firebase";
 import Card from "./Card";
 
 import classes from "./Cards.module.css";
 
 function Cards({ userObj }) {
+	const navigate = useNavigate();
 	const [cards, setCards] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 
 	const deleteHandler = (cardId) => {
-		let docRef = doc(db, "cards", cardId);
+		let docRef = doc(db, userObj.uid, cardId);
 		deleteDoc(docRef);
 		window.location.reload();
+		navigate("/profile/cards");
 	};
 
 	useEffect(() => {
-		getAllCards(userObj).then((data) => {
+		getAllCards(userObj.uid).then((data) => {
 			const arr = [];
 			data.forEach((doc) => {
 				arr.push(doc.data());
 			});
 			setCards(arr);
 			setIsLoading(false);
+			navigate("/profile/cards");
 		});
 	}, []);
 

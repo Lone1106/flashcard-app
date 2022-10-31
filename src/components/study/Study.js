@@ -13,7 +13,7 @@ function Study({ userObj }) {
 	let cardCount = cards.length === 0 ? 0 : cards.length;
 
 	useEffect(() => {
-		getAllCards(userObj).then((data) => {
+		getAllCards(userObj.uid).then((data) => {
 			const arr = [];
 			data.forEach((doc) => {
 				arr.push(doc.data());
