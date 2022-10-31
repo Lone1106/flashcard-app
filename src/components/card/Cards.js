@@ -17,7 +17,7 @@ function Cards({ userObj }) {
 			setCards(arr);
 			setIsLoading(false);
 		});
-	}, []);
+	}, [cards]);
 
 	return (
 		<section className={classes.cards}>

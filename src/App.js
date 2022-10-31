@@ -15,6 +15,7 @@ import Loading from "./components/pages/Loading";
 import Navigation from "./components/navigation/Navigation";
 import Study from "./components/study/Study";
 import ChangeCard from "./components/forms/ChangeCard";
+import { ProtectRoute } from "./components/util/Util";
 import "./main.css";
 
 function App() {
@@ -47,34 +48,50 @@ function App() {
 						<Route path="/signup" exact element={<Signup />} />
 						<Route path="/login" exact element={<Login />} />
 
-						{user && (
-							<>
-								<Route
-									path="/profile"
-									exact
-									element={<Profile userObj={user} />}
-								/>
-								<Route
-									path="/profile/add-card"
-									exact
-									element={<AddCard userObj={user} />}
-								/>
-								<Route
-									path="/profile/cards"
-									exact
-									element={<Cards userObj={user} />}
-								/>
-								<Route
-									path="/profile/cards/update/:cardId"
-									element={<ChangeCard userObj={user} />}
-								/>
-								<Route
-									path="/profile/study"
-									exact
-									element={<Study userObj={user} />}
-								/>
-							</>
-						)}
+						<Route
+							path="/profile"
+							exact
+							element={
+								<ProtectRoute userObj={user}>
+									<Profile userObj={user} />
+								</ProtectRoute>
+							}
+						/>
+						<Route
+							path="/profile/add-card"
+							exact
+							element={
+								<ProtectRoute userObj={user}>
+									<AddCard userObj={user} />
+								</ProtectRoute>
+							}
+						/>
+						<Route
+							path="/profile/cards"
+							exact
+							element={
+								<ProtectRoute userObj={user}>
+									<Cards userObj={user} />
+								</ProtectRoute>
+							}
+						/>
+						<Route
+							path="/profile/cards/update/:cardId"
+							element={
+								<ProtectRoute userObj={user}>
+									<ChangeCard userObj={user} />
+								</ProtectRoute>
+							}
+						/>
+						<Route
+							path="/profile/study"
+							exact
+							element={
+								<ProtectRoute userObj={user}>
+									<Study userObj={user} />
+								</ProtectRoute>
+							}
+						/>
 					</Routes>
 				)}
 			</main>

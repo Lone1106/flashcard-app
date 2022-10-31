@@ -1,20 +1,20 @@
 import { Link } from "react-router-dom";
 import { db } from "../firebase/Firebase";
 import { doc, deleteDoc } from "firebase/firestore/lite";
-import { useNavigate } from "react-router-dom";
 
 import classes from "./Cards.module.css";
 
 function Card({ textFront, textBack, id, deleteOne, userObj }) {
 	let cardLink = `/profile/cards/update/${id}`;
-	const navigate = useNavigate();
 
-	const deleteHandler = (e) => {
+	const deleteHandler = async (e) => {
 		e.preventDefault();
-		let docRef = doc(db, userObj.uid, id);
-		deleteDoc(docRef).then(() => {
-			navigate("/profile");
-		});
+		try {
+			let docRef = await doc(db, userObj.uid, id);
+			await deleteDoc(docRef);
+		} catch (e) {
+			console.log(e);
+		}
 	};
 
 	return (
