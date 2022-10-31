@@ -1,23 +1,12 @@
-import { doc, deleteDoc } from "firebase/firestore/lite";
 import { getAllCards } from "../firebase/Firebase";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { db } from "../firebase/Firebase";
 import Card from "./Card";
 
 import classes from "./Cards.module.css";
 
 function Cards({ userObj }) {
-	const navigate = useNavigate();
 	const [cards, setCards] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
-
-	const deleteHandler = async (cardId) => {
-		let docRef = await doc(db, userObj.uid, cardId);
-		await deleteDoc(docRef);
-		await window.location.reload();
-		await navigate("/profile/cards");
-	};
 
 	useEffect(() => {
 		getAllCards(userObj.uid).then((data) => {
@@ -27,7 +16,6 @@ function Cards({ userObj }) {
 			});
 			setCards(arr);
 			setIsLoading(false);
-			navigate("/profile/cards");
 		});
 	}, []);
 
@@ -44,7 +32,7 @@ function Cards({ userObj }) {
 						textBack={item.backside}
 						key={item.idRef}
 						id={item.idRef}
-						deleteOne={deleteHandler}
+						userObj={userObj}
 					/>
 				);
 			})}

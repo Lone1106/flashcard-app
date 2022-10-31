@@ -15,8 +15,4 @@ Missing important features:
 
 - Delete all cards
 
-Bugs:
-
-- Delete doesnt work when deployed?
-
 [Preview here](https://harmonious-platypus-6d8124.netlify.app/)

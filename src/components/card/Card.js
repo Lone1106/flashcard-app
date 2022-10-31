@@ -1,12 +1,20 @@
 import { Link } from "react-router-dom";
+import { db } from "../firebase/Firebase";
+import { doc, deleteDoc } from "firebase/firestore/lite";
+import { useNavigate } from "react-router-dom";
 
 import classes from "./Cards.module.css";
 
-function Card({ textFront, textBack, id, deleteOne }) {
+function Card({ textFront, textBack, id, deleteOne, userObj }) {
 	let cardLink = `/profile/cards/update/${id}`;
+	const navigate = useNavigate();
 
-	const deleteCard = () => {
-		deleteOne(id);
+	const deleteHandler = (e) => {
+		e.preventDefault();
+		let docRef = doc(db, userObj.uid, id);
+		deleteDoc(docRef).then(() => {
+			navigate("/profile");
+		});
 	};
 
 	return (
@@ -18,7 +26,7 @@ function Card({ textFront, textBack, id, deleteOne }) {
 				<Link to={cardLink} className={classes.button}>
 					<i className="fa-solid fa-pen-to-square"></i>
 				</Link>
-				<button onClick={deleteCard} className={classes.button}>
+				<button onClick={deleteHandler} className={classes.button}>
 					<i className="fa-solid fa-trash"></i>
 				</button>
 			</div>
