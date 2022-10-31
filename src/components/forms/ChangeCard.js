@@ -5,7 +5,7 @@ import { useRef } from "react";
 
 import classes from "./Form.module.css";
 
-function ChangeCard() {
+function ChangeCard({ userObj }) {
 	const params = useParams();
 	const navigate = useNavigate();
 
@@ -15,7 +15,7 @@ function ChangeCard() {
 	const updateCard = async (e) => {
 		e.preventDefault();
 		try {
-			let cardRef = await doc(db, "cards", params.cardId);
+			let cardRef = await doc(db, userObj.uid, params.cardId);
 			await updateDoc(cardRef, {
 				frontside: updatedFront.current.value,
 				backside: updatedBack.current.value,

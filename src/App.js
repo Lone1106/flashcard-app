@@ -66,7 +66,7 @@ function App() {
 								/>
 								<Route
 									path="/profile/cards/update/:cardId"
-									element={<ChangeCard />}
+									element={<ChangeCard userObj={user} />}
 								/>
 								<Route
 									path="/profile/study"
