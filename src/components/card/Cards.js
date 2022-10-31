@@ -12,11 +12,11 @@ function Cards({ userObj }) {
 	const [cards, setCards] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 
-	const deleteHandler = (cardId) => {
-		let docRef = doc(db, userObj.uid, cardId);
-		deleteDoc(docRef);
-		window.location.reload();
-		navigate("/profile/cards");
+	const deleteHandler = async (cardId) => {
+		let docRef = await doc(db, userObj.uid, cardId);
+		await deleteDoc(docRef);
+		await window.location.reload();
+		await navigate("/profile/cards");
 	};
 
 	useEffect(() => {

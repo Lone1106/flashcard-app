@@ -5,6 +5,7 @@ This is a very basic react flashcard app that lets you:
 - Signup/Login as a user
 - Add Flashcards
 - View all Cards
+- Edit Flashcards
 - Delete Cards
 - Study Cards
 - Delete user
@@ -12,6 +13,10 @@ This is a very basic react flashcard app that lets you:
 
 Missing important features:
 
-- Edit Flashcards
+- Delete all cards
+
+Bugs:
+
+- Delete doesnt work when deployed?
 
 [Preview here](https://harmonious-platypus-6d8124.netlify.app/)
