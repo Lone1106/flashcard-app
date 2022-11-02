@@ -14,10 +14,10 @@ function Cards({ userObj }) {
 			data.forEach((doc) => {
 				arr.push(doc.data());
 			});
-			setCards(arr);
+			setCards(() => arr);
 			setIsLoading(false);
 		});
-	}, [cards]);
+	}, []);
 
 	return (
 		<section className={classes.cards}>
@@ -25,7 +25,7 @@ function Cards({ userObj }) {
 				<h4 className={classes.nocards}>There are no cards yet</h4>
 			)}
 			{isLoading && <div className={classes.spinner}></div>}
-			{cards.map((item) => {
+			{cards?.map((item) => {
 				return (
 					<Card
 						textFront={item.frontside}

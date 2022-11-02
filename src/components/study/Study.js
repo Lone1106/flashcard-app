@@ -18,7 +18,7 @@ function Study({ userObj }) {
 			data.forEach((doc) => {
 				arr.push(doc.data());
 			});
-			setCards(arr);
+			setCards(() => arr);
 		});
 	}, []);
 

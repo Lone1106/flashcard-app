@@ -12,6 +12,7 @@ function Card({ textFront, textBack, id, deleteOne, userObj }) {
 		try {
 			let docRef = await doc(db, userObj.uid, id);
 			await deleteDoc(docRef);
+			window.location.refresh();
 		} catch (e) {
 			console.log(e);
 		}

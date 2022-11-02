@@ -11,8 +11,4 @@ This is a very basic react flashcard app that lets you:
 - Delete user
 - Change password
 
-Missing important features:
-
-- Delete all cards
-
 [Preview here](https://harmonious-platypus-6d8124.netlify.app/)
