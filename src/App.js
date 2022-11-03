@@ -1,10 +1,8 @@
 import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
 import { useState, useEffect, lazy, Suspense } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import firebaseAuth from "./components/firebase/Firebase";
 
-import Header from "./components/header/Header";
-import Home from "./components/pages/Home";
+import firebaseAuth from "./components/firebase/Firebase";
 import { ProtectRoute } from "./components/util/Util";
 
 import "./main.css";
@@ -19,6 +17,8 @@ const ChangeCard = lazy(() => import("./components/forms/ChangeCard"));
 const Loading = lazy(() => import("./components/pages/Loading"));
 const Navigation = lazy(() => import("./components/navigation/Navigation"));
 const ErrorPage = lazy(() => import("./components/pages/Error"));
+const Header = lazy(() => import("./components/header/Header"));
+const Home = lazy(() => import("./components/pages/Home"));
 
 
 function App() {
