@@ -20,9 +20,8 @@ const ErrorPage = lazy(() => import("./components/pages/Error"));
 const Header = lazy(() => import("./components/header/Header"));
 const Home = lazy(() => import("./components/pages/Home"));
 
-
 function App() {
-	const [user, loading] = useAuthState(firebaseAuth, {
+	const [user] = useAuthState(firebaseAuth, {
 		onUserChanged: true,
 	});
 	const [navigated, setNavigated] = useState(false);
@@ -41,64 +40,61 @@ function App() {
 			<Header userObj={user} />
 			{user && <Navigation />}
 			<main>
-				{loading && <Loading />}
-				{!loading && (
-					<Suspense fallback={<Loading />}>
-						<Routes>
-							<Route exact path="/error" element={<ErrorPage />} />
-							<Route exact path="/" element={<Navigate to="/home" />} />
-							<Route path="/home" element={<Home />} />
-							{!loading && <Route path="*" element={<ErrorPage />} />}
-							<Route path="/signup" exact element={<Signup />} />
-							<Route path="/login" exact element={<Login />} />
+				<Suspense fallback={<Loading />}>
+					<Routes>
+						<Route exact path="/error" element={<ErrorPage />} />
+						<Route exact path="/" element={<Navigate to="/home" />} />
+						<Route path="/home" element={<Home />} />
+						<Route path="*" element={<ErrorPage />} />
+						<Route path="/signup" exact element={<Signup />} />
+						<Route path="/login" exact element={<Login />} />
 
-							<Route
-								path="/profile"
-								exact
-								element={
-									<ProtectRoute userObj={user}>
-										<Profile userObj={user} />
-									</ProtectRoute>
-								}
-							/>
-							<Route
-								path="/profile/add-card"
-								exact
-								element={
-									<ProtectRoute userObj={user}>
-										<AddCard userObj={user} />
-									</ProtectRoute>
-								}
-							/>
-							<Route
-								path="/profile/cards"
-								exact
-								element={
-									<ProtectRoute userObj={user}>
-										<Cards userObj={user} />
-									</ProtectRoute>
-								}
-							/>
-							<Route
-								path="/profile/cards/update/:cardId"
-								element={
-									<ProtectRoute userObj={user}>
-										<ChangeCard userObj={user} />
-									</ProtectRoute>
-								}
-							/>
-							<Route
-								path="/profile/study"
-								exact
-								element={
-									<ProtectRoute userObj={user}>
-										<Study userObj={user} />
-									</ProtectRoute>
-								}
-							/>
-						</Routes>
-					</Suspense>
-				)}
+						<Route
+							path="/profile"
+							exact
+							element={
+								<ProtectRoute userObj={user}>
+									<Profile userObj={user} />
+								</ProtectRoute>
+							}
+						/>
+						<Route
+							path="/profile/add-card"
+							exact
+							element={
+								<ProtectRoute userObj={user}>
+									<AddCard userObj={user} />
+								</ProtectRoute>
+							}
+						/>
+						<Route
+							path="/profile/cards"
+							exact
+							element={
+								<ProtectRoute userObj={user}>
+									<Cards userObj={user} />
+								</ProtectRoute>
+							}
+						/>
+						<Route
+							path="/profile/cards/update/:cardId"
+							element={
+								<ProtectRoute userObj={user}>
+									<ChangeCard userObj={user} />
+								</ProtectRoute>
+							}
+						/>
+						<Route
+							path="/profile/study"
+							exact
+							element={
+								<ProtectRoute userObj={user}>
+									<Study userObj={user} />
+								</ProtectRoute>
+							}
+						/>
+					</Routes>
+				</Suspense>
 			</main>
 		</div>
 	);
