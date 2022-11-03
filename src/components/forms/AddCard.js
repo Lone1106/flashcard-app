@@ -2,24 +2,30 @@ import { useRef } from "react";
 import { setDoc, doc } from "firebase/firestore/lite";
 import { db } from "../firebase/Firebase";
 import uuid from "react-uuid";
+import { useNavigate } from "react-router-dom";
 
 import classes from "./Form.module.css";
 
 function AddCard({ userObj }) {
 	const front = useRef("");
 	const back = useRef("");
+	const navigate = useNavigate();
 
-	const newCard = (e) => {
+	const newCard = async (e) => {
 		e.preventDefault();
 
-		let docId = uuid();
-		setDoc(doc(db, userObj.uid, docId), {
-			frontside: front.current.value,
-			backside: back.current.value,
-			idRef: docId,
-		});
-
-		e.target.reset()
+		try {
+			let docId = await uuid();
+			await setDoc(doc(db, userObj.uid, docId), {
+				frontside: front.current.value,
+				backside: back.current.value,
+				idRef: docId,
+			});
+			await e.target.reset();
+		} catch (e) {
+			console.log(e);
+			navigate("/error");
+		}
 	};
 
 	return (

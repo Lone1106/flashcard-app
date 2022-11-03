@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { db } from "../firebase/Firebase";
 import { doc, deleteDoc } from "firebase/firestore/lite";
 
@@ -6,15 +6,17 @@ import classes from "./Cards.module.css";
 
 function Card({ textFront, textBack, id, deleteOne, userObj }) {
 	let cardLink = `/profile/cards/update/${id}`;
+	const navigate = useNavigate();
 
 	const deleteHandler = async (e) => {
 		e.preventDefault();
 		try {
 			let docRef = await doc(db, userObj.uid, id);
 			await deleteDoc(docRef);
-			window.location.refresh();
+			await navigate("/profile");
 		} catch (e) {
 			console.log(e);
+			navigate("/error");
 		}
 	};
 
